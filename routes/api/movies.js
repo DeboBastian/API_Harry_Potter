@@ -1,12 +1,14 @@
 const router = require('express').Router();
 
+const { getAll } = require('../../models/movies')
 
 
 
-router.get('/', (req, res) => {
+router.get('/', async (req, res) => {
 
     try {
-        res.send('GET');
+        const [movies] = await getAll()
+        res.json(movies);
     } catch (error) {
         res.json({ fatal: error.message });
     }
