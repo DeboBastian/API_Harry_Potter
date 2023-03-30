@@ -1,0 +1,18 @@
+
+@host = http://localhost:3000
+@urlMovies = /api/movies
+
+
+###
+GET {{host}}{{urlMovies}}
+
+
+###
+PUT {{host}}{{urlMovies}}
+
+
+###
+POST {{host}}{{urlMovies}}
+
+###
+DELETE {{host}}{{urlMovies}}
