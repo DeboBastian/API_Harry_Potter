@@ -1,6 +1,6 @@
 const router = require('express').Router();
 
-const { getAll } = require('../../models/movies')
+const { getAll, create, deleteById, getMovieById } = require('../../models/movies')
 
 
 
@@ -15,6 +15,18 @@ router.get('/', async (req, res) => {
 });
 
 
+router.get('/:movieId', async (req, res) => {
+    const { movieId } = req.params;
+    try {
+        const [movie] = await getMovieById(movieId)
+        res.json(movie[0])
+    } catch (error) {
+        res.json({ fatal: error.message });
+    }
+})
+
+
+
 
 router.put('/', (req, res) => {
 
@@ -27,10 +39,13 @@ router.put('/', (req, res) => {
 
 
 
-router.post('/', (req, res) => {
+router.post('/:new', async (req, res) => {
 
     try {
-        res.send('POST');
+        const [newMovie] = await create(req.body);
+        const [movie] = await getMovieById(newMovie.insertId)
+
+        res.json(movie[0])
     } catch (error) {
         res.json({ fatal: error.message });
     }
@@ -39,10 +54,13 @@ router.post('/', (req, res) => {
 
 
 
-router.delete('/', (req, res) => {
+router.delete('/:movieId', async (req, res) => {
+    const { movieId } = req.params
 
     try {
-        res.send('DELETE');
+        const [movie] = await getMovieById(movieId)
+        const [result] = await deleteById(movieId)
+        res.json(movie[0])
     } catch (error) {
         res.json({ fatal: error.message });
     }
