@@ -1,6 +1,6 @@
 const router = require('express').Router();
 
-const { getAll, create, deleteById, getMovieById } = require('../../models/movies')
+const { getAll, create, deleteById, getMovieById, modifyById } = require('../../models/movies')
 
 
 
@@ -28,10 +28,10 @@ router.get('/:movieId', async (req, res) => {
 
 
 
-router.put('/', (req, res) => {
-
+router.put('/:movieId', async (req, res) => {
     try {
-        res.send('PUT');
+        const [movie] = await modifyById(movieId)
+        res.json(movie[0]);
     } catch (error) {
         res.json({ fatal: error.message });
     }
