@@ -2,7 +2,7 @@
 @host = http://localhost:3000
 @urlMovies = /api/movies
 @urlCharacters = /api/characters
-
+@urlUsers = /api/users
 
 
 #####################################################################  MOVIES  ####################
@@ -43,7 +43,7 @@ Content-Type: application/json
 
 
 ###
-DELETE {{host}}{{urlMovies}}/9
+DELETE {{host}}{{urlMovies}}/10
 
 
 
@@ -84,3 +84,28 @@ Content-Type: application/json
 
 ###
 DELETE {{host}}{{urlCharacters}}/34
+
+
+##################################################   USERS   ##################################################
+
+### NEW USER
+POST {{host}}{{urlUsers}}/register
+Content-Type: application/json
+
+{
+"username": "marta",
+"email": "marta@gmail.com",
+"password": "12345",
+"role": "admin"
+
+}
+
+
+### LOGIN
+POST {{host}}{{urlUsers}}/login
+Content-Type: application/json
+
+{
+    "email": "marta@gmail.com",
+    "password": "12345"
+}
