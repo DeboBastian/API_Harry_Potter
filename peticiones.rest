@@ -9,7 +9,7 @@
 
 ### GET ALL
 GET {{host}}{{urlMovies}}
-
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxNywiZXhwIjoxNjgxNjY4NzE3LCJpYXQiOjE2ODEyMzY3MTd9.7gJIMT2Jr4JuJiThXhMtBUu5QT14yTV8JJpRZsw7f6Y
 
 ### POST 
 POST {{host}}{{urlMovies}}/new
@@ -53,9 +53,13 @@ DELETE {{host}}{{urlMovies}}/10
 
 ###
 GET {{host}}{{urlCharacters}}
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxNywiZXhwIjoxNjgxNjY4NzE3LCJpYXQiOjE2ODEyMzY3MTd9.7gJIMT2Jr4JuJiThXhMtBUu5QT14yTV8JJpRZsw7f6Y
+
 
 ### GET BY ID
 GET {{host}}{{urlCharacters}}/25
+
+
 
 ###
 PUT {{host}}{{urlCharacters}}/35
@@ -93,8 +97,8 @@ POST {{host}}{{urlUsers}}/register
 Content-Type: application/json
 
 {
-"username": "marta",
-"email": "marta@gmail.com",
+"username": "sara",
+"email": "sara",
 "password": "12345",
 "role": "admin"
 

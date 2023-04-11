@@ -1,10 +1,11 @@
 const router = require('express').Router();
 
+const { checkToken } = require('../../helpers/middlewares');
 const { getAll, getById, createCharacter, deleteCharacterById, update } = require('../../models/characters')
 
 
 
-router.get('/', async (req, res) => {
+router.get('/', checkToken, async (req, res) => {
 
     try {
         const [characters] = await getAll()
